@@ -1,5 +1,6 @@
 package com.example.appsqlite
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -13,10 +14,16 @@ class MainActivity : AppCompatActivity() {
         val edtNome: EditText = findViewById(R.id.edtNome)
         val edtEndereco: EditText = findViewById(R.id.edtEndereco)
         val edtcep: EditText = findViewById(R.id.edtCEP)
+        val edtBairro:EditText = findViewById(R.id.edtBairro)
         val btnCadastrar: Button = findViewById(R.id.btnCadastrar)
 
         btnCadastrar.setOnClickListener{
-
+            val intent = Intent (this, RespostaActivity::class.java)
+            intent.putExtra("nome",edtNome.text.toString())
+            intent.putExtra("endereço",edtEndereco.text.toString())
+            intent.putExtra("bairro",edtBairro.text.toString())
+            intent.putExtra("cep",edtcep.text.toString())
+            startActivity(intent)
         }
     }
 }
